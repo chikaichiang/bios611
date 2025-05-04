@@ -1,0 +1,11 @@
+library(factoextra)
+library(cluster)
+options(warn=-1)
+d2<-read.csv("Data/behavorial_risk.csv")
+dev.new()
+png(file="figures/k_mean_cluster_plot.png",
+    width=600, height=350)
+set.seed(2023)
+km <- kmeans(d2, centers = 8, nstart = 25)
+fviz_cluster(km, data = d2)
+dev.off()
